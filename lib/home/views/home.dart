@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:rifas/core/drawer.dart';
+
+import '../../raffle/views/create.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -17,11 +20,9 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey,
-      drawer: Container(),
+      drawer: const NavDrawer(),
       appBar: AppBar(
         title: const Text('Rifas'),
-        backgroundColor: const Color(0xff08196D),
         actions: [
           Padding(
             padding: const EdgeInsets.all(10.0),
@@ -35,12 +36,14 @@ class _HomeState extends State<Home> {
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: SingleChildScrollView(
+          padding: const EdgeInsets.only(bottom: 75),
           child: Column(
             children: [
               Container(
-                decoration: const BoxDecoration(
-                    color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(13))
+                decoration: BoxDecoration(
+                  boxShadow: kElevationToShadow[4],
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(Radius.circular(18))
                 ),
                 child: ExpansionTile(
                     title: Text('Rifa de Páscoa',
@@ -111,6 +114,12 @@ class _HomeState extends State<Home> {
             ],
           ),
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+          onPressed: () {
+            Navigator.push(context, MaterialPageRoute(builder: (_)=> const CreateRaffle()));
+          },
+        child: const Icon(Icons.add),
       ),
     );
   }

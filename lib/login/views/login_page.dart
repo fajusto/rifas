@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:rifas/home/views/home.dart';
+
+import '../../core/instances.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -9,6 +12,8 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final _emailController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -39,10 +44,9 @@ class _LoginPageState extends State<LoginPage> {
               const Text(
                 'Login',
                 style: TextStyle(
-                  fontSize: 30.0,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-                ),
+                    fontSize: 30.0,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white),
               ),
               const SizedBox(height: 20.0),
               Form(
@@ -52,6 +56,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Column(
                     children: [
                       TextFormField(
+                        controller: _emailController,
                         decoration: InputDecoration(
                           hintText: 'Email',
                           prefixIcon: const Icon(Icons.email),
@@ -68,6 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                       ),
                       const SizedBox(height: 20.0),
                       TextFormField(
+                        controller: _passwordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           hintText: 'Password',
@@ -88,9 +94,16 @@ class _LoginPageState extends State<LoginPage> {
                         width: double.infinity,
                         height: 40,
                         child: ElevatedButton(
-                          onPressed: () {
+                          onPressed: () async {
                             if (_formKey.currentState!.validate()) {
-                              // Perform login
+                              await loginController
+                                  .signInWithEmailAndPassword(
+                                      _emailController.text,
+                                      _passwordController.text);
+                              if (loginController.user!.uid.isNotEmpty) {
+                                Navigator.pushReplacement(context,
+                                    MaterialPageRoute(builder: (_) => Home()));
+                              }
                             }
                           },
                           child: const Text('LOGIN'),

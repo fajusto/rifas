@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "210402467847",
+    "project_id": "rifas-ieaderp",
+    "storage_bucket": "rifas-ieaderp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:210402467847:android:685ae7c560ff6581d58aa2",
+        "android_client_info": {
+          "package_name": "com.example.rifas"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "210402467847-9b9snjj2t183obvldg2nvn4k4osi4584.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEzMM9CG7KK4KS06Gl1IhP7ud6SaOcjUE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "210402467847-9b9snjj2t183obvldg2nvn4k4osi4584.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
