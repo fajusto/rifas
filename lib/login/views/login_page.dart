@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:rifas/home/views/home.dart';
 
 import '../../core/instances.dart';
@@ -31,6 +32,7 @@ class _LoginPageState extends State<LoginPage> {
           ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const SizedBox(height: 80.0),
               Center(
@@ -41,11 +43,10 @@ class _LoginPageState extends State<LoginPage> {
                 ),
               ),
               const SizedBox(height: 20.0),
-              const Text(
+              Text(
                 'Login',
-                style: TextStyle(
+                style: GoogleFonts.lobster(
                     fontSize: 30.0,
-                    fontWeight: FontWeight.bold,
                     color: Colors.white),
               ),
               const SizedBox(height: 20.0),
@@ -66,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Email is required';
+                            return 'Email é requerido';
                           }
                           return null;
                         },
@@ -84,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         validator: (value) {
                           if (value!.isEmpty) {
-                            return 'Password is required';
+                            return 'Senha é requerida';
                           }
                           return null;
                         },
@@ -106,7 +107,7 @@ class _LoginPageState extends State<LoginPage> {
                               }
                             }
                           },
-                          child: const Text('LOGIN'),
+                          child: const Text('ENTRAR'),
                         ),
                       ),
                     ],

@@ -25,18 +25,35 @@ mixin _$RaffleController on _RaffleController, Store {
     });
   }
 
+  late final _$isLoadingAtom =
+      Atom(name: '_RaffleController.isLoading', context: context);
+
+  @override
+  bool get isLoading {
+    _$isLoadingAtom.reportRead();
+    return super.isLoading;
+  }
+
+  @override
+  set isLoading(bool value) {
+    _$isLoadingAtom.reportWrite(value, super.isLoading, () {
+      super.isLoading = value;
+    });
+  }
+
   late final _$storeRaffleAsyncAction =
       AsyncAction('_RaffleController.storeRaffle', context: context);
 
   @override
-  Future storeRaffle() {
-    return _$storeRaffleAsyncAction.run(() => super.storeRaffle());
+  Future<bool> storeRaffle(Raffle? raffle) {
+    return _$storeRaffleAsyncAction.run(() => super.storeRaffle(raffle));
   }
 
   @override
   String toString() {
     return '''
-raffle: ${raffle}
+raffle: ${raffle},
+isLoading: ${isLoading}
     ''';
   }
 }

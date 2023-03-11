@@ -41,6 +41,7 @@ abstract class _LoginController with Store {
 
     // Check if user is already signed in
     if (auth.currentUser != null) {
+      user = auth.currentUser;
       return true;
     } else {
       return false;
