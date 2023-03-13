@@ -23,6 +23,14 @@ class CreateRaffleState extends State<CreateRaffle> {
   int? _quantity;
   String? _price;
 
+  _snackBar() {
+    const AdvanceSnackBar(
+        message: "Rifa criada com sucesso!",
+        bgColor: Colors.green,
+        textColor: Colors.white)
+        .show(context);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,17 +132,17 @@ class CreateRaffleState extends State<CreateRaffle> {
                               price: _price,
                             ));
                             if(result == true) {
-                              const AdvanceSnackBar(
-                                  message: "Rifa criada com sucesso!",
-                                  bgColor: Colors.green,
-                                  textColor: Colors.white)
-                                  .show(context);
+                              _snackBar();
+                              _formKey.currentState!.reset();
                             }
                           }
                         } : null,
                         child: Visibility(
                             visible: !raffleController.isLoading,
-                            replacement: const CircularProgressIndicator(),
+                            replacement: const SizedBox(
+                              height: 25,
+                                width: 25,
+                                child: CircularProgressIndicator(color: Colors.white,)),
                             child: const Text('Enviar'),
                         ),
                       );

@@ -23,5 +23,5 @@ class Raffle {
         'quantity': quantity,
         'price': price,
         'createdBy': createdBy,
-      };
+  };
 }
